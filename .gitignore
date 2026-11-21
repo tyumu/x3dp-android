@@ -28,3 +28,7 @@ Thumbs.db
 *.log
 *.hprof
 out/
+
+# 個人設定(ビルド時の既定値)。テンプレートだけ公開する。
+.env
+!.env.template

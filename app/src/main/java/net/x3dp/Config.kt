@@ -8,11 +8,11 @@ class Config(ctx: Context) {
     private val p = ctx.getSharedPreferences("x3dp", Context.MODE_PRIVATE)
 
     var host: String
-        get() = p.getString("host", "x3disp.local") ?: "x3disp.local"
+        get() = p.getString("host", BuildConfig.DEFAULT_HOST) ?: BuildConfig.DEFAULT_HOST
         set(v) = p.edit().putString("host", v).apply()
 
     var port: Int
-        get() = p.getInt("port", 5283)
+        get() = p.getInt("port", BuildConfig.DEFAULT_PORT)
         set(v) = p.edit().putInt("port", v).apply()
 
     /** 連続モード中は画面を真っ暗にする */
@@ -40,9 +40,9 @@ class Config(ctx: Context) {
         get() = p.getString("launchPkg", "") ?: ""
         set(v) = p.edit().putString("launchPkg", v).apply()
 
-    /** "wifi" or "ble" */
+    /** "wifi" or "ble" (ビルド時の既定は .env の X3_TRANSPORT) */
     var transport: String
-        get() = p.getString("transport", "wifi") ?: "wifi"
+        get() = p.getString("transport", BuildConfig.DEFAULT_TRANSPORT) ?: BuildConfig.DEFAULT_TRANSPORT
         set(v) = p.edit().putString("transport", v).apply()
 
     var mode: Int              // 0=1bit, 1=4gray

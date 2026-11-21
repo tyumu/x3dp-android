@@ -35,6 +35,10 @@ VPN (AdGuard / Tailscale) を常時 ON にしていても、Wi-Fi の `Network` 
 
 ## ビルド
 
+個人設定はリポジトリ直下の `.env` から焼き込みます(`.env.template` をコピー。`.env` は git 管理外)。
+`X3_HOST` / `X3_PORT` / `X3_TRANSPORT` がビルド時の既定値になり、アプリ内の設定画面で上書きできます。
+`.env` が無ければ `x3disp.local` / `5283` / `ble` が使われます。
+
 ```
 # 前提: JDK 17+ (21 で確認), Android SDK (compileSdk 34 / build-tools 34+), Gradle 8.9
 gradle assembleDebug          # app/build/outputs/apk/debug/app-debug.apk
